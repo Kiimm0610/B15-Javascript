@@ -269,25 +269,31 @@ function tinhHoaDonCap() {
 
     if (loaiKhachHang === "nhaDan") {
         var bill = 4.5 + 20.5 + 7.5 * channel;
-        totalBill.innerHTML =
-            "Mã khách hàng: " +
+        totalBill.innerHTML = "";
+        totalBill.innerHTML +=
+            "<p class='alert alert-success'>Mã khách hàng: " +
             maKhachHang +
-            "<br>" +
-            "Tổng hóa đơn: " +
+            "</p>";
+        totalBill.innerHTML +=
+            "<p class='alert alert-success'>Tổng hóa đơn: " +
             "$ " +
-            bill;
+            bill +
+            "</p>";
     } else if (loaiKhachHang === "doanhNghiep") {
         if (isNaN(connection)) {
             totalBill.innerHTML = "Vui lòng nhập số kết nối";
         } else {
             var bill = 15 + 75 + (connection - 10) * 5 + 50 * channel;
-            totalBill.innerHTML =
-                "Mã khách hàng: " +
+            totalBill.innerHTML = "";
+            totalBill.innerHTML +=
+                "<p class='alert alert-success'>Mã khách hàng: " +
                 maKhachHang +
-                "<br>" +
-                "Tổng hóa đơn: " +
+                "</p>";
+            totalBill.innerHTML +=
+                "<p class='alert alert-success'>Tổng hóa đơn: " +
                 "$ " +
-                bill;
+                bill +
+                "</p>";
         }
     }
 }
