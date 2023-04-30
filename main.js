@@ -331,3 +331,36 @@ function calculateBill() {
 
     tinhHoaDonCap();
 }
+
+function calcTax() {
+    var userName = document.getElementById("inputUserName").value,
+        // Thu nhập chịu thuế = Tổng thu nhập năm - 4tr- Số người phụ thuộc * 1.6tr
+        userSalary = document.getElementById("inputSalary").value - 4e6 - 16e5 * document.getElementById("inputDependent").value,
+
+        // Thu nhập đến 60 triệu: thì thuế 5 % là = thu nhập * 0.05
+        // Dùng biểu thức: condition ? expression1 : expression2 để kiểm tra điều kiện "condition". Nếu điều kiện đúng (true), biểu thức sẽ trả về giá trị của "expression1". Nếu điều kiện sai (false), biểu thức sẽ trả về giá trị của "expression2". nếu "userSalary" nằm trong khoảng từ 0 đến 6e7 (69 triệu), biển "userTax" sẽ được gán giá trị bằng 5% thuế của biển "userSalary". Nếu "userSalary" lớn hơn 6e7, biển "userTax" sẽ không được gán giá trị và giá trị của nó sẽ được giữ nguyên.tương tự các giá trị khác trong bảng đem ra.
+
+        userTax = 0;
+    // Thu nhập đến 60 triệu, thuế 5%:
+    userSalary > 0 && userSalary <= 6e7 ? userTax = .05 * userSalary : userSalary > 6e7 &&
+
+        // Thu nhập đến 128 triệu, thuế 10%:
+        userSalary <= 12e7 ? t = .1 * userSalary : userSalary > 12e7 &&
+
+            // Thu nhập đến 210 triệu, thuế 15%:
+            userSalary <= 21e7 ? userTax = .15 * userSalary : userSalary > 21e7 &&
+
+                // Thu nhập đến 384 triệu, thuế 20%:
+                userSalary <= 384e6 ? userTax = .2 * userSalary : userSalary > 384e6 &&
+
+                    // Thu nhập đến 624 triệu, thuế 25%:
+                    userSalary <= 624e6 ? userTax = .25 * userSalary : userSalary > 624e6 &&
+
+                        // Thu nhập đến 960 triệu, thuế 30% và trên 968, thuế 35%:
+                        userSalary <= 96e7 ? userTax = .3 * userSalary : userSalary > 96e7 ? userTax = .35 * userSalary : alert("Số tiền thu nhập không hợp lệ"),
+        userTax = new Intl.NumberFormat("vn-VN").format(userTax), document.getElementById("txtTax").innerHTML =
+        "<p class='alert alert-success'>"
+        + "Họ tên: " + userName + "; Tiền thuế thu nhập cá nhân: " + userTax + " VND" + "</p>"
+
+}
+document.getElementById("btnTax").onclick = calcTax
