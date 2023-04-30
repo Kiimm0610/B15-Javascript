@@ -195,7 +195,8 @@ function getTax(id) {
 }
 
 function tinhTax(totalTax) {
-    var result = "";
+    var result = 0; // Khai báo biến result kiểu số và gán giá trị số 0 cho nó
+
     if (!totalTax) {
         alert("Vui lòng nhập số thu nhập cá nhân");
     } else if (totalTax <= 60000000) {
@@ -229,6 +230,11 @@ function tinhTax(totalTax) {
             240000000 * tax624 +
             (totalTax - 624000000) * tax960;
     }
+
+    if (result < 0) { // Kiểm tra nếu kết quả thuế tính toán được nhỏ hơn 0
+        result = 0; // Gán giá trị 0 cho biến result
+    }
+
     return result;
 }
 
@@ -242,6 +248,10 @@ function btnTax() {
         incomeTax = tinhTax(totalTax) - personTax * 1600000;
     } else {
         incomeTax = tinhTax(totalTax);
+    }
+
+    if (incomeTax < 0) {
+        incomeTax = 0
     }
 
     var formatNumTax = new Intl.NumberFormat("vn-Vn");
