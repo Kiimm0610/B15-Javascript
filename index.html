@@ -162,16 +162,74 @@
                                     aria-describedby="helpId"
                                 />
                             </div>
-                            <button
-                                onclick="btnTax()"
-                                class="btn btn-success"
-                            >
+                            <button onclick="btnTax()" class="btn btn-success">
                                 Tính thuế
                             </button>
                         </div>
                         <div
                             id="showIncomeTax"
                             class="card-footer text-muted"
+                        ></div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="card my-4">
+                        <div class="card-header">Tính hóa đơn cáp</div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="customer-code"
+                                    >Mã khách hàng:</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="customer-code"
+                                    onchange="calculateBill()"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-type"
+                                    >Loại khách hàng:</label
+                                >
+                                <select
+                                    class="form-control"
+                                    id="customer-type"
+                                    onchange="toggleConnectionInput(); calculateBill()"
+                                >
+                                    <option value="nhaDan">Nhà dân</option>
+                                    <option value="doanhNghiep">
+                                        Doanh nghiệp
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="connection"
+                                    onchange="calculateBill()"
+                                    style="display: none"
+                                    placeholder="Số kết nối"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="channel"
+                                    onchange="calculateBill()"
+                                    placeholder="Số kênh cao cấp"
+                                />
+                            </div>
+                            <button
+                                class="btn btn-success"
+                                onclick="tinhHoaDonCap()"
+                            >
+                                Tính
+                            </button>
+                        </div>
+                        <div
+                            class="card-footer text-muted"
+                            id="total-bill"
                         ></div>
                     </div>
                 </div>
