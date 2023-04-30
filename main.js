@@ -261,42 +261,42 @@ function btnTax() {
 }
 
 function tinhHoaDonCap() {
-    var customerCode = document.getElementById("customer-code").value;
-    var customerType = document.getElementById("customer-type").value;
+    var maKhachHang = document.getElementById("maKhachHang").value;
+    var loaiKhachHang = document.getElementById("loaiKhachHang").value;
     var connection = parseInt(document.getElementById("connection").value);
     var channel = parseInt(document.getElementById("channel").value);
-    var totalBill = document.getElementById("total-bill");
+    var totalBill = document.getElementById("totalBill");
 
-    if (customerType === "nhaDan") {
+    if (loaiKhachHang === "nhaDan") {
         var bill = 4.5 + 20.5 + 7.5 * channel;
         totalBill.innerHTML =
             "Mã khách hàng: " +
-            customerCode +
+            maKhachHang +
             "<br>" +
             "Tổng hóa đơn: " +
-            "$" +
+            "$ " +
             bill;
-    } else if (customerType === "doanhNghiep") {
+    } else if (loaiKhachHang === "doanhNghiep") {
         if (isNaN(connection)) {
             totalBill.innerHTML = "Vui lòng nhập số kết nối";
         } else {
             var bill = 15 + 75 + (connection - 10) * 5 + 50 * channel;
             totalBill.innerHTML =
                 "Mã khách hàng: " +
-                customerCode +
+                maKhachHang +
                 "<br>" +
                 "Tổng hóa đơn: " +
-                "$" +
+                "$ " +
                 bill;
         }
     }
 }
 
 function toggleConnectionInput() {
-    var customerType = document.getElementById("customer-type").value;
+    var loaiKhachHang = document.getElementById("loaiKhachHang").value;
     var connectionInput = document.getElementById("connection");
 
-    if (customerType === "doanhNghiep") {
+    if (loaiKhachHang === "doanhNghiep") {
         connectionInput.style.display = "block";
     } else {
         connectionInput.style.display = "none";
@@ -308,7 +308,7 @@ function calculateBill() {
     var channel = parseInt(document.getElementById("channel").value);
 
     if (isNaN(channel)) {
-        document.getElementById("total-bill").innerHTML =
+        document.getElementById("totalBill").innerHTML =
             "Vui lòng nhập số kênh cao cấp";
         return;
     }

@@ -176,23 +176,23 @@
                         <div class="card-header">Tính hóa đơn cáp</div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="customer-code"
+                                <label for="maKhachHang"
                                     >Mã khách hàng:</label
                                 >
                                 <input
                                     type="text"
                                     class="form-control"
-                                    id="customer-code"
+                                    id="maKhachHang"
                                     onchange="calculateBill()"
                                 />
                             </div>
                             <div class="form-group">
-                                <label for="customer-type"
+                                <label for="loaiKhachHang"
                                     >Loại khách hàng:</label
                                 >
                                 <select
                                     class="form-control"
-                                    id="customer-type"
+                                    id="loaiKhachHang"
                                     onchange="toggleConnectionInput(); calculateBill()"
                                 >
                                     <option value="nhaDan">Nhà dân</option>
@@ -229,7 +229,7 @@
                         </div>
                         <div
                             class="card-footer text-muted"
-                            id="total-bill"
+                            id="totalBill"
                         ></div>
                     </div>
                 </div>
